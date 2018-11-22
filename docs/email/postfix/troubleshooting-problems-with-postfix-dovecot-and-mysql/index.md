@@ -372,6 +372,10 @@ Use that command whenever the instructions tell you to restart Postfix. Substitu
 
 If you succeeded in sending your system user a test message, you have successfully installed Postfix and configured it for the most basic mail delivery. By default, it delivers mail only for system users, and mail is stored in a file called `/var/mail/myuser`.
 
+### Mailutils
+
+The Linode guide (Email with Postfix, Dovecot, and MySQL) suggests using Mailutils test confirm that you can receive emails. The problem is that if you have an issue and haven't yet received an email the "sudo mail -f /var/mail/vhosts/example.com/myuser" command will create /../myuser as a file instead of a directory. Even if you resolve other issues preventing the server from receiving email, the user folder is now invalid and won't work. If /../myuser was created as a file instead of a folder, delete it and run your test again.
+
 ### Basic Dovecot
 
 In this section, you'll install Dovecot and set it up so you can check your email for your system user over an IMAP or POP3 connection, which is the most basic configuration. This section is based on Dovecot's [Basic Configuration Guide](http://wiki2.dovecot.org/BasicConfiguration), which is a great reference.
